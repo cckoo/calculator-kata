@@ -37,6 +37,13 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
      * @expectedException NegativeNumNotAllowedException
      */
     public function testNegativeNumNotAllowed() {
-        $this->calculator->add('1, -2');
+        $this->calculator->add('1,-2');
+    }
+
+    /**
+     * @expectedException NegativeNumNotAllowedException
+     */
+    public function testNegativeNumsNotAllowed() {
+        $this->calculator->add('-1,-2,-3');
     }
 }

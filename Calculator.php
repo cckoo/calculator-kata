@@ -6,6 +6,7 @@ class Calculator {
     private $delimiter  = "/,|\n/";
     private $selfDefine = "/\/\/(.)\n(.*)/";
     private $stringNum;
+    private $negative = [];
 
     public function add($stringNum) {
 
@@ -25,6 +26,7 @@ class Calculator {
             $this->_validateNumNotNegative($value);
             $this->count += $value;
         }
+        $this->_throwExceptionWithNegativeNums();
     }
 
     private function _getDelimiterAndStringNum($stringNum) {
@@ -38,13 +40,19 @@ class Calculator {
 
     private function _validateNumNotNegative($num) {
         if ($num < 0) {
-            throw new NegativeNumNotAllowedException($value);
+            array_push($this->negative, $num);
+        }
+    }
+
+    private function _throwExceptionWithNegativeNums() {
+        if ($this->negative) {
+            throw new NegativeNumNotAllowedException($this->negative);
         }
     }
 }
 
 class NegativeNumNotAllowedException extends Exception {
     public function __construct($nums) {
-        $this->message = "Negative nums not allowed" . $nums;
+        $this->message = "Negative nums not allowed(" . implode(",", $nums) . ")";
     }
 }
