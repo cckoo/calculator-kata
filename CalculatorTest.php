@@ -24,4 +24,8 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
     public function testMultyNumStringReturnCount() {
         $this->assertEquals(6, $this->calculator->add('1,2,3'));
     }
+
+    public function testNumStringDelimiterWithNewline() {
+        $this->assertEquals(6, $this->calculator->add('1,2\n3'));
+    }
 }
