@@ -3,13 +3,17 @@
 require_once 'Calculator.php';
 
 class CalculatorTest extends PHPUnit_Framework_TestCase {
+    private $calculator;
+
+    public function __construct() {
+        $this->calculator = new Calculator();
+    }
+
     public function testNullStringReturnZero() {
-        $calculator = new Calculator();
-        $this->assertEquals(0, $calculator->add(''));
+        $this->assertEquals(0, $this->calculator->add(''));
     }
 
     public function testNumStringReturnNum() {
-        $calculator = new Calculator();
-        $this->assertEquals(1, $calculator->add('1'));
+        $this->assertEquals(1, $this->calculator->add('1'));
     }
 }
