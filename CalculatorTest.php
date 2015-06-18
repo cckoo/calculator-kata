@@ -32,4 +32,11 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
     public function testNumStringWithSelfDefineDelimiter() {
         $this->assertEquals(3, $this->calculator->add("//;\n1;2"));
     }
+
+    /**
+     * @expectedException NegativeNumNotAllowedException
+     */
+    public function testNegativeNumNotAllowed() {
+        $this->calculator->add('1, -2');
+    }
 }
