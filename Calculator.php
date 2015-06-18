@@ -19,6 +19,11 @@ class Calculator {
     }
 
     private function _getCount($nums) {
-        return $nums[0] + $nums[1];
+        $count = 0;
+        foreach($nums as $value) {
+            $count += $value;
+        }
+
+        return $count;
     }
 }
