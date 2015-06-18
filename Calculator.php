@@ -5,27 +5,33 @@ class Calculator {
     private $count      = 0;
     private $delimiter  = "/,|\n/";
     private $selfDefine = "/\/\/(.)\n(.*)/";
-
+    private $stringNum;
 
     public function add($stringNum) {
 
-        if (preg_match($this->selfDefine, $stringNum, $matchs)) {
-            $this->delimiter = "/$matchs[1]/";
-            $stringNum       = $matchs[2];
-        }
-        $nums = $this->_getNums($stringNum);
+        $this->_getDelimiterAndStringNum($stringNum);
+        $nums = $this->_getNums();
         $this->_getCount($nums);
 
         return $this->count;
     }
 
-    private function _getNums($stringNum) {
-        return preg_split($this->delimiter, $stringNum);
+    private function _getNums() {
+        return preg_split($this->delimiter, $this->stringNum);
     }
 
     private function _getCount($nums) {
         foreach($nums as $value) {
             $this->count += $value;
+        }
+    }
+
+    private function _getDelimiterAndStringNum($stringNum) {
+        if (preg_match($this->selfDefine, $stringNum, $matchs)) {
+            $this->delimiter = "/$matchs[1]/";
+            $this->stringNum       = $matchs[2];
+        } else {
+            $this->stringNum = $stringNum;
         }
     }
 }
