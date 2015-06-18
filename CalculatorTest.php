@@ -16,4 +16,7 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
     public function testNumStringReturnNum() {
         $this->assertEquals(1, $this->calculator->add('1'));
     }
+
+    public function testTwoNumStringReturnCount() {
+    }
 }
