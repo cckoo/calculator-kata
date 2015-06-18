@@ -26,6 +26,6 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testNumStringDelimiterWithNewline() {
-        $this->assertEquals(6, $this->calculator->add('1,2\n3'));
+        $this->assertEquals(6, $this->calculator->add("1,2\n3"));
     }
 }
