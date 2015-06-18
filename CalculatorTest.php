@@ -7,4 +7,9 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
         $calculator = new Calculator();
         $this->assertEquals(0, $calculator->add(''));
     }
+
+    public function testNumStringReturnNum() {
+        $calculator = new Calculator();
+        $this->assertEquals(1, $calculator->add('1'));
+    }
 }
