@@ -3,10 +3,14 @@
 define("DELIMITER", ',');
 
 class Calculator {
+
+    public $count = 0;
+
     public function add($stringNum) {
         if (strpos($stringNum, DELIMITER)) {
             $nums = $this->_getNums($stringNum);
-            return $this->_getCount($nums);
+            $this->_getCount($nums);
+            return $this->count;
         }
         if ($stringNum) {
             return $stringNum;
@@ -19,11 +23,8 @@ class Calculator {
     }
 
     private function _getCount($nums) {
-        $count = 0;
         foreach($nums as $value) {
-            $count += $value;
+            $this->count += $value;
         }
-
-        return $count;
     }
 }
