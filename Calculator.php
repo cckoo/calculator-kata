@@ -22,10 +22,7 @@ class Calculator {
 
     private function _getCount($nums) {
         foreach($nums as $value) {
-            if ($value < 0) {
-                throw new NegativeNumNotAllowedException($value);
-
-            }
+            $this->_validateNumNotNegative($value);
             $this->count += $value;
         }
     }
@@ -36,6 +33,12 @@ class Calculator {
             $this->stringNum       = $matchs[2];
         } else {
             $this->stringNum = $stringNum;
+        }
+    }
+
+    private function _validateNumNotNegative($num) {
+        if ($num < 0) {
+            throw new NegativeNumNotAllowedException($value);
         }
     }
 }
