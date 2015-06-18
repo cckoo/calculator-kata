@@ -20,4 +20,8 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
     public function testTwoNumStringReturnCount() {
         $this->assertEquals(3, $this->calculator->add('1,2'));
     }
+
+    public function testMultyNumStringReturnCount() {
+        $this->assertEquals(6, $this->calculator->add('1,2,3'));
+    }
 }
