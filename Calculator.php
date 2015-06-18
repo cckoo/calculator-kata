@@ -4,7 +4,7 @@ define("DELIMITER", ',');
 
 class Calculator {
 
-    public $count = 0;
+    private $count = 0;
 
     public function add($stringNum) {
         if (strpos($stringNum, DELIMITER)) {
